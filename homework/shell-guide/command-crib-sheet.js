@@ -208,7 +208,7 @@ $(function() {
         });
     });
     $('#boxclose').click(function () {
-        $('#box').animate({'top':'-500px'}, 500, function () {
+        $('#box').animate({'top':'-600px'}, 500, function () {
             $('#overlay').fadeOut('fast');
         });
     });
