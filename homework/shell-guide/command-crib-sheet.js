@@ -77,7 +77,7 @@ var man = new command(
 	"description, and all the options of the command."
 );
 
-var script = new command(
+var wc = new command(
 	"wc",
 	"The wc command displays the word, line, character, and byte count.",
 	"$ wc index.html",
@@ -175,7 +175,7 @@ var star = new command(
 
 var list = {
 	"cat": cat, "traceroute": traceroute, "curl": curl, "ssh": ssh, "sudo": sudo,
-	"grep": grep, "diff": diff, "man": man, "script": script, "hexdump": hexdump,
+	"grep": grep, "diff": diff, "man": man, "wc": wc, "hexdump": hexdump,
 	".bash_profile": bashProfile, "PATH": path, ". (period)": period, "$": dollar, "|": pipe,
 	">": greaterThan, "<": lessThan, "&&": doubleAnd, "||": doubleOr, "*": star
 };
