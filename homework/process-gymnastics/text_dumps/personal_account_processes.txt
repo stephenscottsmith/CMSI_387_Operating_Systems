@@ -1,0 +1,109 @@
+Command: ps -u crashprophet
+
+Result:
+  UID   PID TTY           TIME CMD
+  501   209 ??         0:00.63 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 0 -name Chris's MacBook Pro -id 33056920-A58D-4CD3-8363-09638ECBB609
+  501   210 ??         0:00.63 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 1 -name Chris's MacBook Pro 2 -id D9277EA0-D7D4-43AE-8F6F-533A9C231908
+  501   211 ??         0:00.63 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 2 -name Chris's MacBook Pro 3 -id DA5F1CBF-0090-4F50-8ADD-07FE9D4B98D4
+  501   212 ??         0:00.64 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 3 -name Chris's MacBook Pro 4 -id 01A65057-833E-4E5E-A12A-23FF924B06BB
+  501   213 ??         0:00.63 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 4 -name Chris's MacBook Pro 5 -id 43217DEF-AFCD-42D3-B2F2-437E4EED0187
+  501   214 ??         0:00.62 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 5 -name Chris's MacBook Pro 6 -id 3E3C0438-C133-4D02-B5C2-5A13E5C84F3E
+  501   215 ??         0:00.62 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 6 -name Chris's MacBook Pro 7 -id FEED3B63-317F-4F30-B9B3-80BCF7B0DB95
+  501   216 ??         0:00.63 /Library/Frameworks/Compressor.framework/Resources/CompressorTranscoderX.bundle/Contents/MacOS/compressord -v -idx 7 -name Chris's MacBook Pro 8 -id 895E4F8B-F974-460D-8C4B-551D32C94BC5
+  501   217 ??         0:00.62 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 0 -name Chris's MacBook Pro -id E3487804-E9FA-4029-B00F-9313E19279DF
+  501   218 ??         0:00.61 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 1 -name Chris's MacBook Pro 2 -id 44C6281D-24AF-4FEB-9952-3C21BF9FEC7E
+  501   219 ??         0:00.59 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 2 -name Chris's MacBook Pro 3 -id 887422FF-A591-4D77-BA48-17A17C56321D
+  501   220 ??         0:00.60 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 3 -name Chris's MacBook Pro 4 -id 9E5D39EE-A35B-47DB-BE77-10C963C94D4C
+  501   221 ??         0:00.60 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 4 -name Chris's MacBook Pro 5 -id 701D15C3-835F-4DE9-B93C-D6B123B98867
+  501   222 ??         0:00.60 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 5 -name Chris's MacBook Pro 6 -id C06C92E6-93BE-41A5-BDDF-E4EB1A6E291A
+  501   223 ??         0:00.59 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 6 -name Chris's MacBook Pro 7 -id 298A7E7C-2BF7-4872-9FCA-900ADC44AF21
+  501   224 ??         0:00.59 /Library/PreferencePanes/Apple Qmaster.prefPane/Contents/Resources/QmasterTaskService.bundle/Contents/MacOS/qmastertaskd -d -v -idx 7 -name Chris's MacBook Pro 8 -id BF6C05A6-1AAD-4B46-915B-FB6A457020C8
+  501   243 ??         0:04.10 /sbin/launchd
+  501   247 ??         0:03.08 /usr/libexec/UserEventAgent (Aqua)
+  501   248 ??         2:47.75 /usr/sbin/distnoted agent
+  501   251 ??         0:02.62 /usr/sbin/cfprefsd agent
+  501   252 ??         0:20.36 /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal -psn_0_98328
+  501   256 ??         0:51.07 /Applications/iTunes.app/Contents/MacOS/iTunes -psn_0_106522
+  501   257 ??         0:11.84 /Applications/Notes.app/Contents/MacOS/Notes -psn_0_110619
+  501   260 ??         0:01.35 /Applications/LimeChat.app/Contents/MacOS/LimeChat -psn_0_122910
+  501   262 ??         0:22.19 /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+  501   263 ??         0:45.58 /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer
+  501   264 ??         0:17.37 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder
+  501   269 ??         0:01.35 /usr/libexec/xpcd
+  501   270 ??         0:00.01 /usr/sbin/pboard
+  501   275 ??         0:00.54 /usr/libexec/sharingd
+  501   276 ??         0:14.98 /System/Library/Frameworks/ApplicationServices.framework/Frameworks/ATS.framework/Support/fontd
+  501   277 ??         0:00.34 /System/Library/PrivateFrameworks/TCC.framework/Resources/tccd
+  501   279 ??         0:00.43 /usr/libexec/librariand
+  501   280 ??         0:02.68 /System/Library/PrivateFrameworks/Ubiquity.framework/Versions/A/Support/ubd
+  501   282 ??         0:01.41 /usr/sbin/usernoted
+  501   286 ??         0:03.95 /System/Library/CoreServices/NotificationCenter.app/Contents/MacOS/NotificationCenter
+  501   287 ??         0:13.35 com.apple.IconServicesAgent
+  501   288 ??         0:01.80 /System/Library/Frameworks/CFNetwork.framework/Versions/A/Support/cookied
+  501   289 ??         0:01.34 /System/Library/PrivateFrameworks/MessagesKit.framework/Resources/soagent.app/Contents/MacOS/soagent
+  501   291 ??         0:00.87 com.apple.ShareKitHelper
+  501   292 ??         0:13.20 /System/Library/PrivateFrameworks/CalendarAgent.framework/Executables/CalendarAgent
+  501   293 ??         0:00.52 /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/Contents/MacOS/imagent
+  501   294 ??         0:00.12 com.apple.imdpersistence.IMDPersistenceAgent
+  501   296 ??         0:01.89 /System/Library/PrivateFrameworks/IDSCore.framework/identityservicesd.app/Contents/MacOS/identityservicesd
+  501   297 ??         0:01.65 /usr/libexec/secd
+  501   298 ??         0:00.18 /usr/libexec/lsboxd
+  501   301 ??         0:00.51 /System/Library/Frameworks/Accounts.framework/Versions/A/Support/accountsd
+  501   303 ??         0:03.25 com.apple.internetaccounts
+  501   304 ??         0:00.78 com.apple.dock.extra
+  501   361 ??         0:00.13 com.apple.NotesMigratorService
+  501   403 ??         0:00.27 /System/Library/CoreServices/pbs
+  501   438 ??         0:03.33 /Applications/VMware Fusion.app/Contents/Library/VMware Fusion Start Menu.app/Contents/MacOS/VMware Fusion Start Menu -psn_0_200753
+  501   439 ??         0:02.50 /System/Library/Services/AppleSpell.service/Contents/MacOS/AppleSpell
+  501   442 ??         0:00.20 com.apple.InputMethodKit.UserDictionary
+  501   446 ??         0:00.11 com.apple.BKAgentService
+  501   447 ??         0:01.07 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Resources/bookstoreagent
+  501   456 ??         0:00.12 /usr/libexec/WiFiKeychainProxy
+  501   457 ??         0:00.10 /System/Library/CoreServices/SocialPushAgent.app/Contents/MacOS/SocialPushAgent
+  501   462 ??         0:00.08 /System/Library/PrivateFrameworks/HelpData.framework/Versions/A/Resources/helpd
+  501   464 ??         0:00.26 /System/Library/CoreServices/AppleIDAuthAgent
+  501   472 ??         0:01.01 /Users/crashprophet/Library/Application Support/Spotify/SpotifyWebHelper
+  501   476 ??         0:30.09 /Users/crashprophet/Applications/Akamai/netsession_mac
+  501   484 ??         0:00.20 /Applications/iTunes.app/Contents/MacOS/iTunesHelper.app/Contents/MacOS/iTunesHelper
+  501   490 ??         1:50.87 /Applications/Leap Motion.app/Contents/MacOS/Leap Motion
+  501   491 ??         0:03.20 /Applications/Utilities/Adobe Application Manager/UWA/AAM Updates Notifier.app/Contents/MacOS/AAM Updates Notifier
+  501   492 ??         0:01.24 /Library/PreferencePanes/Air Display Preferences.prefPane/Contents/Resources/AirDisplayStatusItem.app/Contents/MacOS/AirDisplayStatusItem
+  501   498 ??         0:18.48 /Applications/Drobo Dashboard.app/Contents/Resources/DDAssist.app/Contents/MacOS/DDAssist
+  501   508 ??         0:00.03 /System/Library/Frameworks/Security.framework/Versions/A/Resources/CloudKeychainProxy.bundle/Contents/MacOS/CloudKeychainProxy
+  501   523 ??         0:01.42 /System/Library/PrivateFrameworks/AirTrafficHost.framework/ath --pipe 44 60 --target 400e6338f3a7fdcc0bd5acc9c503c43e8a2337e8 --library E5E98EA7E1F80E6C
+  501   525 ??         0:02.76 com.apple.MediaLibraryService
+  501   526 ??         0:00.12 /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/Current/AppleMobileDeviceHelper.app/Contents/MacOS/AppleMobileDeviceHelper --pipe 10 54
+  501   529 ??         0:01.70 /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Resources/storeagent
+  501   531 ??         0:00.10 com.apple.geod
+  501   550 ??         0:00.04 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdflagwriter
+  501   590 ??         1:54.85 /Applications/Safari.app/Contents/MacOS/Safari
+  501   592 ??         1:43.91 com.apple.WebKit.Networking
+  501   601 ??         0:32.24 com.apple.WebKit.WebContent
+  501   602 ??         0:00.02 com.apple.audio.SandboxHelper
+  501   603 ??         0:00.06 com.apple.audio.ComponentHelper
+  501   606 ??         4:39.98 com.apple.WebKit.WebContent
+  501   617 ??         0:00.02 com.apple.audio.SandboxHelper
+  501   618 ??         0:00.06 com.apple.audio.ComponentHelper
+  501   663 ??         0:00.18 /System/Library/PrivateFrameworks/UniversalAccess.framework/Versions/A/Resources/universalAccessAuthWarn.app/Contents/MacOS/universalAccessAuthWarn launchd -s
+  501   762 ??         0:00.18 /System/Library/PrivateFrameworks/CloudServices.framework/Resources/EscrowSecurityAlert.app/Contents/MacOS/EscrowSecurityAlert
+  501   773 ??         0:00.10 /usr/libexec/SafariNotificationAgent
+  501   826 ??         0:00.02 /usr/libexec/USBAgent
+  501   832 ??         0:00.02 /System/Library/CoreServices/AirPort Base Station Agent.app/Contents/MacOS/AirPort Base Station Agent --launchd
+  501  1326 ??         0:00.04 /System/Library/Frameworks/ApplicationServices.framework/Frameworks/PrintCore.framework/Versions/A/printtool agent
+  501  1651 ??         0:02.43 /Applications/TextEdit.app/Contents/MacOS/TextEdit
+  501  1661 ??         0:00.06 /System/Library/CoreServices/ScopedBookmarkAgent
+  501  1787 ??         0:24.73 /Applications/Pages.app/Contents/MacOS/Pages
+  501  1791 ??         0:00.01 com.apple.ColorSyncXPCAgent
+  501  1795 ??         0:08.87 com.apple.MediaLibraryService
+  501  1799 ??         0:00.28 com.apple.appkit.xpc.openAndSavePanelService
+  501  1844 ??         0:39.79 /Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2
+  501  1860 ??         0:00.10 /System/Library/CoreServices/rcd.app/Contents/MacOS/rcd
+  501  1861 ??         0:37.51 /System/Library/PrivateFrameworks/WebKit2.framework/PluginProcess.app/Contents/MacOS/PluginProcess /System/Library/PrivateFrameworks/WebKit2.framework/WebKit2 -type pluginprocess -servicename com.apple.WebKit.WebProcess-590-0x1168fd680 -localization en_US -client-identifier com.apple.Safari -ui-process-name Safari -plugin-path /Library/Internet Plug-Ins/Flash Player.plugin
+  501  1868 ??         0:00.33 com.apple.WebKit.WebContent
+  501  1933 ??         0:06.87 com.apple.WebKit.WebContent
+  501  1940 ??         0:00.28 com.apple.iCloudHelper
+    0   307 ttys000    0:00.05 login -pf crashprophet /bin/bash
+  501   309 ttys000    0:00.08 -bash
+    0  1609 ttys001    0:00.04 login -pf crashprophet /bin/bash
+  501  1610 ttys001    0:00.13 -bash
+    0  1969 ttys001    0:00.00 ps -u crashprophet

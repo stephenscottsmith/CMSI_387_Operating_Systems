@@ -1,0 +1,163 @@
+Command: ps -A
+
+Results: 
+  PID TTY          TIME CMD
+    1 ?        00:04:37 init
+    2 ?        00:00:00 kthreadd
+    3 ?        00:06:20 ksoftirqd/0
+    6 ?        00:00:00 migration/0
+    7 ?        00:00:00 migration/1
+    8 ?        00:00:00 kworker/1:0
+    9 ?        00:02:05 ksoftirqd/1
+   11 ?        00:00:00 migration/2
+   12 ?        00:02:28 kworker/2:0
+   13 ?        00:03:02 ksoftirqd/2
+   14 ?        00:00:00 migration/3
+   15 ?        00:00:00 kworker/3:0
+   16 ?        00:01:55 ksoftirqd/3
+   17 ?        00:00:00 cpuset
+   18 ?        00:00:00 khelper
+   19 ?        00:00:00 netns
+   20 ?        00:00:00 kworker/u:1
+   21 ?        00:00:17 sync_supers
+   22 ?        00:00:00 bdi-default
+   23 ?        00:00:00 kintegrityd
+   24 ?        00:00:00 kblockd
+   25 ?        00:00:00 ata_sff
+   26 ?        00:00:00 khubd
+   27 ?        00:00:00 md
+   28 ?        00:07:33 kworker/1:1
+   29 ?        00:05:16 kworker/2:1
+   30 ?        00:05:13 kworker/3:1
+   31 ?        00:00:02 khungtaskd
+   32 ?        01:01:53 kswapd0
+   33 ?        00:00:00 ksmd
+   34 ?        00:00:00 khugepaged
+   35 ?        00:00:00 fsnotify_mark
+   36 ?        00:00:00 ecryptfs-kthrea
+   37 ?        00:00:00 crypto
+   45 ?        00:00:00 kthrotld
+   46 ?        00:00:00 scsi_eh_0
+   47 ?        00:00:00 scsi_eh_1
+   48 ?        00:00:01 kworker/u:2
+  257 ?        00:00:23 jbd2/sda1-8
+  258 ?        00:00:00 ext4-dio-unwrit
+  315 ?        00:00:00 upstart-udev-br
+  320 ?        00:00:00 udevd
+  466 ?        00:00:00 udevd
+  467 ?        00:00:00 udevd
+  532 ?        00:00:00 kpsmoused
+  564 ?        00:00:00 upstart-socket-
+  565 ?        00:00:26 rpcbind
+  587 ?        00:46:17 flush-8:0
+  613 ?        00:00:00 jbd2/sda6-8
+  614 ?        00:00:00 ext4-dio-unwrit
+  622 ?        00:12:05 jbd2/sda10-8
+  623 ?        00:00:00 ext4-dio-unwrit
+  628 ?        00:00:00 jbd2/sda8-8
+  629 ?        00:00:00 ext4-dio-unwrit
+  632 ?        00:02:59 jbd2/sda7-8
+  633 ?        00:00:00 ext4-dio-unwrit
+  640 ?        00:15:45 jbd2/sda9-8
+  641 ?        00:00:00 ext4-dio-unwrit
+  692 ?        00:00:00 rpciod
+  694 ?        00:13:57 rsyslogd
+  710 ?        00:00:00 rpc.statd
+  711 ?        00:00:00 nfsiod
+  722 ?        00:00:00 dbus-daemon
+  724 ?        00:00:01 rpc.idmapd
+  776 ?        00:00:19 dhclient3
+  808 ?        00:01:13 sshd
+  888 tty4     00:00:00 getty
+  893 tty5     00:00:00 getty
+  898 tty2     00:00:00 getty
+  900 tty3     00:00:00 getty
+  903 tty6     00:00:00 getty
+  913 ?        00:00:24 cron
+  914 ?        00:00:00 atd
+  939 ?        00:25:27 mysqld
+  952 ?        00:24:27 irqbalance
+  992 ?        01:06:39 ipfm
+ 1007 ?        00:00:00 netserver
+ 1049 ?        00:00:00 lockd
+ 1050 ?        00:00:00 nfsd4
+ 1051 ?        00:00:00 nfsd4_callbacks
+ 1052 ?        00:13:59 nfsd
+ 1053 ?        00:13:55 nfsd
+ 1054 ?        00:14:07 nfsd
+ 1055 ?        00:14:16 nfsd
+ 1056 ?        00:13:59 nfsd
+ 1057 ?        00:14:09 nfsd
+ 1058 ?        00:13:54 nfsd
+ 1059 ?        00:14:01 nfsd
+ 1063 ?        00:00:31 rpc.mountd
+ 1094 ?        00:00:38 ypbind
+ 1286 ?        00:00:30 master
+ 1301 ?        00:00:08 qmgr
+ 1369 tty1     00:00:00 getty
+ 1617 ?        00:00:00 apache2
+ 2922 ?        00:00:03 auditd
+ 2924 ?        00:00:06 audispd
+ 2926 ?        00:00:00 kauditd
+ 3090 ?        00:00:00 kworker/0:1
+ 3246 pts/4    00:00:00 bash
+ 3902 ?        00:00:00 ntpd
+ 5044 ?        00:00:00 apache2
+ 5054 ?        00:00:25 kworker/0:0
+ 6144 ?        00:00:00 apache2
+ 9032 ?        00:00:00 apache2
+11923 ?        00:00:03 tlsmgr
+12304 ?        00:00:00 apache2
+12533 ?        00:00:00 sshd
+12560 ?        00:00:00 sshd
+12561 pts/3    00:00:00 bash
+12679 pts/3    00:00:00 bash
+13331 ?        00:00:00 sshd
+13361 ?        00:00:00 sshd
+13362 pts/11   00:00:00 bash
+13431 ?        00:00:00 apache2
+13467 pts/11   00:00:00 tmux
+14083 pts/2    00:00:00 bash
+14899 ?        00:00:00 sshd
+14926 ?        00:00:00 sshd
+14927 pts/8    00:00:00 bash
+15289 ?        00:00:00 pickup
+16323 ?        00:00:00 sshd
+16350 ?        00:00:00 sshd
+16351 pts/13   00:00:00 bash
+16487 ?        00:00:00 sshd
+16488 ?        00:00:00 sshd
+16492 pts/3    00:00:00 ps
+18880 ?        00:00:00 apache2
+22333 ?        00:24:15 tmux
+22462 ?        00:02:14 apache2
+24143 ?        00:00:14 screen
+24144 pts/1    00:00:00 bash
+24200 pts/1    00:01:18 ping
+25167 ?        00:00:00 apache2
+26137 ?        00:00:00 apache2
+26138 ?        00:00:00 apache2
+29002 ?        00:00:00 sshd
+29027 ?        00:00:01 sshd
+29028 pts/0    00:00:00 bash
+29188 pts/0    00:00:00 ssh
+29674 ?        00:00:01 screen
+29675 pts/5    00:00:00 bash
+29739 pts/5    00:00:05 ping
+29894 ?        00:00:01 screen
+29895 pts/6    00:00:00 bash
+29954 pts/6    00:00:05 ping
+29966 ?        00:00:00 screen
+29967 pts/7    00:00:00 bash
+30187 pts/9    00:00:00 bash
+30413 ?        00:00:01 screen
+30414 pts/10   00:00:00 bash
+30474 pts/10   00:00:05 ping
+
+Supplementary Commands:
+ssmith88@ab201:~$ id -u
+1083
+ssmith88@ab201:~$ id -u root
+0
+
+I ran these to confirm that my uid and root’s were not in the list of processes. 

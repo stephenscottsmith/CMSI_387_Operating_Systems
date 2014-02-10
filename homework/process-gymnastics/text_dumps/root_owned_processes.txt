@@ -1,0 +1,79 @@
+Command: ps -u root
+
+Result:
+  UID   PID TTY           TIME CMD
+    0     1 ??         0:18.59 /sbin/launchd
+    0    18 ??         0:02.20 /usr/libexec/UserEventAgent (System)
+    0    19 ??         0:03.52 /usr/libexec/kextd
+    0    20 ??         0:02.05 /usr/libexec/taskgated -s
+    0    21 ??         0:02.18 /usr/sbin/notifyd
+    0    22 ??         0:02.60 /usr/sbin/securityd -i
+    0    23 ??         0:01.87 /System/Library/CoreServices/powerd.bundle/powerd
+    0    24 ??         0:00.40 /usr/libexec/diskarbitrationd
+    0    25 ??         0:01.50 /usr/sbin/syslogd
+    0    26 ??         0:07.68 /usr/libexec/configd
+    0    28 ??         1:43.71 /usr/sbin/distnoted daemon
+    0    29 ??         0:06.77 /usr/libexec/opendirectoryd
+    0    31 ??         0:02.65 /usr/sbin/cfprefsd daemon
+    0    32 ??         0:00.17 /usr/libexec/xpcd
+    0    36 ??         0:00.57 com.apple.authd
+    0    41 ??         0:03.45 /System/Library/CoreServices/coreservicesd
+    0    54 ??         0:00.05 /usr/libexec/wdhelper
+    0    55 ??         0:00.35 /usr/libexec/warmd
+    0    59 ??         0:00.06 /usr/libexec/stackshot -t
+    0    62 ??         0:00.20 /System/Library/CoreServices/SleepServicesD
+    0    64 ??         0:00.41 /System/Library/PrivateFrameworks/GenerationalStorage.framework/Versions/A/Support/revisiond
+    0    69 ??         0:09.60 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Support/mds
+  501    73 ??         0:04.03 /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow console
+    0    74 ??         0:00.04 /System/Library/CoreServices/logind
+    0    76 ??         0:00.01 /usr/sbin/KernelEventAgent
+    0    78 ??         0:46.21 /usr/libexec/hidd
+    0    79 ??         0:02.16 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Support/fseventsd
+    0    81 ??         0:00.06 /sbin/dynamic_pager -F /private/var/vm/swapfile
+    0    84 ??         0:04.85 /System/Library/CoreServices/launchservicesd
+    0    88 ??         0:00.93 /usr/sbin/blued
+    0    90 ??         0:00.06 autofsd
+    0    91 ??         0:01.24 /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+    0    92 ??         0:00.63 /usr/libexec/aosnotifyd
+    0    93 ??         0:02.79 /usr/libexec/airportd
+    0    94 ??         0:29.52 /Applications/Leap Motion.app/Contents/MacOS/leapd
+    0    95 ??         0:27.32 /Library/Application Support/Data Robotics/Drobo Dashboard/DDService64d
+    0    96 ??         0:00.15 /Library/Application Support/Blackmagic Design/Blackmagic DeckLink/DeckLinkStartup
+    0    97 ??         0:08.15 /usr/sbin/xtendsan/iscsid -d -J-Djava.security.policy=/usr/sbin/xtendsan/iscsid.sec -J-Dcom.attotech.iscsid.discovery.verbose=true --J-Dcom.attotech.iscsid.logLevel=VERBOSE --J-Dcom.attotech.iscsid.discovery.MaxRecvDataSegmentLength=512 --J-Dcom.attotech.iscsid.discovery.AllowPaddedDSL=true
+    0    98 ??         0:00.14 /Library/PrivilegedHelperTools/com.apple.serverd
+    0    99 ??         0:00.85 /usr/sbin/qmasterd
+   88   104 ??         6:27.38 /System/Library/Frameworks/ApplicationServices.framework/Frameworks/CoreGraphics.framework/Resources/WindowServer -daemon
+    0   123 ??         0:00.18 /usr/sbin/filecoordinationd
+    0   125 ??         0:07.22 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mds_stores
+    0   127 ??         0:00.09 /usr/libexec/networkd_privileged
+    0   128 ??         0:00.44 /usr/libexec/usbd
+    0   129 ??         0:00.11 /usr/sbin/ntpd -c /private/etc/ntp-restrict.conf -n -g -p /var/run/ntpd.pid -f /var/db/ntp.drift
+    0   130 ??         0:00.52 /usr/sbin/cupsd -l
+    0   131 ??         0:00.05 /sbin/SystemStarter
+    0   133 ??         0:05.04 /usr/libexec/ServerPerfLog
+    0   134 ??         0:01.76 /usr/libexec/pacemaker -b -e 0.0001 -a 10
+    0   136 ??         0:00.83 /sbin/nfsd
+    0   137 ??         0:01.43 /sbin/emond
+    0   139 ??         0:00.01 /usr/sbin/rpc.lockd
+    0   140 ??         0:00.01 /usr/sbin/rpc.statd
+    0   142 ??         0:00.01 /usr/sbin/rpc.lockd
+    0   148 ??         0:00.36 sysmond
+    0   149 ??         0:00.25 /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/CVMServer
+    0   155 ??         0:00.25 com.apple.CodeSigningHelper
+    0   161 ??         0:00.24 /usr/bin/perl -T /usr/libexec/emlog.pl -l
+    0   164 ??         0:00.01 /usr/libexec/xssendevent
+    0   173 ??         0:00.06 /System/Library/PrivateFrameworks/TCC.framework/Resources/tccd system
+    0   225 ??         0:02.97 /usr/sbin/qmasterqd -d -l -v -idx 0 -name Chris's MacBook Pro -id 9B034E97-A629-4026-9180-31B8A4DC6F3F
+    0   235 ??         0:00.15 /System/Library/PrivateFrameworks/SoftwareUpdate.framework/Resources/suhelperd
+    0   236 ??         0:00.46 /Library/Frameworks/Qmaster.framework/Resources/ContentController.bundle/Contents/MacOS/qmastercc -d -l -v -idx 0 -name Chris's MacBook Pro -id 86A04883-DA27-45C1-9C84-A293D1C00C4E
+    0   237 ??         0:00.01 /usr/libexec/rpc.rquotad
+    0   245 ??         0:00.35 /usr/libexec/securityd_service
+    0   448 ??         0:00.61 /usr/libexec/sandboxd -n PluginProcess -n 
+    0   449 ??         0:00.04 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd
+    0   611 ??         0:00.77 /usr/libexec/systemstatsd
+    0   703 ??         0:01.17 /sbin/launchd
+    0   705 ??         0:00.01 /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdflagwriter
+    0  1087 ??         0:00.00 /usr/libexec/periodic-wrapper daily
+    0  1088 ??         0:00.00 /usr/libexec/periodic-wrapper weekly
+    0  1188 ??         0:00.19 /System/Library/PrivateFrameworks/PackageKit.framework/Resources/installd
+    0  1541 ??         0:00.32 /usr/sbin/ocspd

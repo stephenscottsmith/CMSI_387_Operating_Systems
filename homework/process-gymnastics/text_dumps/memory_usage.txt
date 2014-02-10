@@ -1,0 +1,10 @@
+Command: ps aux -m | head -2 > memory_usage.txt
+
+Result:
+USER              PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
+_windowserver     104   1.1  2.9  4667208 486624   ??  Ss    4:16AM   7:44.64 /System/Library/Frameworks/ApplicationServices.framework/Frameworks/CoreGraphics.framework/Resources/WindowServer -daemon
+
+References:
+http://virtualthreads.blogspot.com/2006/02/understanding-memory-usage-on-linux.html
+
+This process was the top user of both VSZ and RSS. 
