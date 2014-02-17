@@ -160,4 +160,8 @@ ssmith88@ab201:~$ id -u
 ssmith88@ab201:~$ id -u root
 0
 
-I ran these to confirm that my uid and root’s were not in the list of processes. 
+I ran these to confirm that my uid and root’s were not in the list of processes.
+
+# JD: Let me guess---you did man ps on a Mac, but then ran the command
+#     on Linux.  Sorry, play again---the -A option on the Mac does not
+#     work on the ps version that runs in Linux.
