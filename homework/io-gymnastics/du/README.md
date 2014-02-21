@@ -1,0 +1,1 @@
+One flaw in your du approach: of *course* the current directory (".") will have the biggest usage---it lists the total usage of everything inside it! :) You want the directory *inside* . that uses the most space.
