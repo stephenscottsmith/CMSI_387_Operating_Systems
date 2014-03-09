@@ -3,6 +3,8 @@
  * system call (90 on 64-bit) using the syscall function.  Some
  * of its output is then displayed.
  */
+// JD: Again with the commented-out code.  Let it go, let it go...
+
 // #include <linux/kernel.h>
 // #include <linux/types.h>
 // #include <linux/unistd.h>
@@ -27,6 +29,10 @@ int main(int argc, char *argv[]) {
 
 	permissions[0] = permissions[0] << 6;
 	printf("%o", permissions[0]);
+
+    // JD: Idina Menzel is giving you the stinkeye.
+    //     Oh wait---*you actually forgot to reinstate the system call*!!!
+    //     Achievement revoked  O_o
 
 	// mode_t modes[9] = {S_IRUSR, S_IWUSR, S_IXUSR, S_IRGRP, S_IWGRP, S_IXGRP, S_IROTH, S_IWOTH, S_IXOTH};
 	// int permBins[3] = {4, 2, 1};
