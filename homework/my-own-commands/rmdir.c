@@ -18,5 +18,9 @@ int main(int argc, char *argv[]) {
 	if (result == -1) {
 		char *errorMessage = "Error: The operation could not be performed!\n";
 		syscall(4, 2, errorMessage, strlen(errorMessage));
+        // JD: Ohhhhh, derp, I know now: You're using system call *4*, which
+        //     is write on *32-bit* Linux, not 64.  Because the other system
+        //     call is for 64-bit Linux (and therefore I am running this on
+        //     such a system), your errors don't show up.
 	}
 }
