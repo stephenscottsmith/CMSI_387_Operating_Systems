@@ -1,0 +1,66 @@
+diff --git a/Makefile b/Makefile
+index 9ec6864..e043749 100644
+--- a/Makefile
++++ b/Makefile
+@@ -764,7 +764,7 @@ export mod_sign_cmd
+ 
+ 
+ ifeq ($(KBUILD_EXTMOD),)
+-core-y		+= kernel/ mm/ fs/ ipc/ security/ crypto/ block/
++core-y		+= kernel/ mm/ fs/ ipc/ security/ crypto/ block/ steve/
+ 
+ vmlinux-dirs	:= $(patsubst %/,%,$(filter %/, $(init-y) $(init-m) \
+ 		     $(core-y) $(core-m) $(drivers-y) $(drivers-m) \
+diff --git a/arch/x86/syscalls/syscall_32.tbl b/arch/x86/syscalls/syscall_32.tbl
+index aabfb83..580a0a6 100644
+--- a/arch/x86/syscalls/syscall_32.tbl
++++ b/arch/x86/syscalls/syscall_32.tbl
+@@ -357,3 +357,4 @@
+ 348	i386	process_vm_writev	sys_process_vm_writev		compat_sys_process_vm_writev
+ 349	i386	kcmp			sys_kcmp
+ 350	i386	finit_module		sys_finit_module
++351     i386    steve                   sys_steve
+diff --git a/arch/x86/syscalls/syscall_64.tbl b/arch/x86/syscalls/syscall_64.tbl
+index 38ae65d..c1e55bf 100644
+--- a/arch/x86/syscalls/syscall_64.tbl
++++ b/arch/x86/syscalls/syscall_64.tbl
+@@ -320,6 +320,7 @@
+ 311	64	process_vm_writev	sys_process_vm_writev
+ 312	common	kcmp			sys_kcmp
+ 313	common	finit_module		sys_finit_module
++351     common  steve                   sys_steve
+ 
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact
+diff --git a/include/linux/syscalls.h b/include/linux/syscalls.h
+index 94273bb..937f383 100644
+--- a/include/linux/syscalls.h
++++ b/include/linux/syscalls.h
+@@ -843,7 +843,7 @@ asmlinkage long sys_process_vm_writev(pid_t pid,
+ 				      const struct iovec __user *rvec,
+ 				      unsigned long riovcnt,
+ 				      unsigned long flags);
+-
++asmlinkage long sys_steve(void);
+ asmlinkage long sys_kcmp(pid_t pid1, pid_t pid2, int type,
+ 			 unsigned long idx1, unsigned long idx2);
+ asmlinkage long sys_finit_module(int fd, const char __user *uargs, int flags);
+diff --git a/steve/Makefile b/steve/Makefile
+new file mode 100644
+index 0000000..cfc9b53
+--- /dev/null
++++ b/steve/Makefile
+@@ -0,0 +1 @@
++obj-y := steve.o
+diff --git a/steve/steve.c b/steve/steve.c
+new file mode 100644
+index 0000000..642c1c6
+--- /dev/null
++++ b/steve/steve.c
+@@ -0,0 +1,6 @@
++#include <linux/kernel.h>
++
++asmlinkage long sys_steve(void) {
++  printk("There is one more thing...\n");
++  return 0;
++}
