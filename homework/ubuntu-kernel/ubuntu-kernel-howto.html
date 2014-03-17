@@ -5,12 +5,123 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <link rel="stylesheet" href="ubuntu-kernel-howto.css">
         <title>There's One More Thing...</title>
     </head>
     <body>
-        <h1>Changing a Linux Kernel</h1>
+        <h1>Building and Modifying a Ubuntu 12.04 Kernel with a Ubuntu 13.04 Kernel</h1>
         <!-- To at least make the above a little easier, we
              at least recruit jQuery's services. -->
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <ol>
+            <li>Download and install the latest 12.04 disc image (<a href="http://www.ubuntu.com/download/desktop">Ubuntu Download</a>)</li><br />
+            <li>Create a virtual machine and install the Ubuntu disc image. This tutorial was performed on the following system and settings:</li> 
+                <br />
+                <ul>
+                    <li>Macbook pro 15-inch Retina running VMWare Fusion 6.0.2</li>
+                    <li>Ubuntu 12.0.4.4 LTS 64-bit</li>
+                    <li>Virtual Machine with 4 dedicated CPU cores, 4096 gigabytes of ram, and 30 gigabytes of hard drive space</li>
+                </ul>
+                <br />
+                <img src="Resources/Step2.TIFF" height="410" width="575">
+                <p>
+                    Tip: While the number of CPU's can be taken down as far as 1 dedicated core, compilation time of the kernel will be significantly decreased if more cores are allocated for the Ubuntu Virtual Machine. If you are doing a 64-bit kernel that you allocating 4 gigabytes of ram will also help. 30 gigabytes of hard drive space is the safest amount because downloading and compiling will take up a lot of space.
+                </p>
+            <li>Once you have gone through a basic installation of the Ubuntu operating system on your new virtual machine, log in and open up a Terminal Window and determine what kernel you are running(If you are running the 12.04 64-bit version of Ubuntu it should be something along the lines of 3.11.0):</li> 
+                <br />
+                    <pre>uname -a</pre>
+                <br />
+            <li>Install Git with the following command:</li>
+                <br />
+                    <pre>sudo apt-get install git</pre>
+                <br />
+            <li>Upon successful installation of Git, you will now clone the latest ubuntu kernel source code (Trusty Tahr 13.04) by entering the following command:</li>
+                <br />
+                    <pre>git clone git://kernel.ubuntu.com/ubuntu/ubuntu-trusty.git</pre>
+                    <p>NOTE: This may take several minutes to hours depending on your download speed.</p>
+            <li>Install the extra packages necessary for a successful build with:</li>
+                <br />
+                    <pre>sudo apt-get build-dep linux-image-$(uname -r)</pre>
+                <br />
+            <li>Install fakeroot:</li>
+                <br />
+                    <pre>sudo apt-get fakeroot</pre>
+                <br />
+            <li>You may now build the kernel. Change your working directory to the root of the kernel source tree and type the following commands:</li>
+                <br />
+                    <pre>fakeroot debian/rules clean<br />fakeroot debian/rules binary-headers binary-generic</pre>
+                <br />
+            <li>If the build is successful, a set of 6 .deb binary package files will be produced in the directory abobe the build root directory.</li>
+                <br />
+                    <pre>cd ..<br />ls *.deb</pre>
+                <br />
+                <img src="Resources/Step9.TIFF" height="500" width="900">
+                <p></p>
+            <li>Install the new packages (and the kernel as a result) with the dpkg -i and reboot commands:</li>
+                <br />
+                    <pre>sudo dpkg -i linux*3.13.0-17.37*.deb<br />sudo reboot</pre>
+                <br />
+                <p>Note: The version of the .deb files is the version number before the _amd64.deb in the linux-headers-3.13.0-17.37_amd64.deb file.</p>
+            <li>When the system has rebooted run the following command to confirm that you are now running a completely new kernel (compare this with step 3):</li>
+                <br />
+                    <pre>uname -a</pre>
+                <br />
+                <img src="Resources/Step11.TIFF" height="500" width="900">
+                <p></p>
+            <li>Now that you have successfully changed the kernel, you will now write a custom system call. Start by going to the root directory of the Ubuntu source code folder. There, you will create a new file. For purposes of this demonstration, we have called it "steve".</li>  
+                <br />
+                    <pre>mkdir steve</pre>
+                <br />
+            <li>Go into the "steve" directory you have just created. Create 2 new files: one called steve.c and the other called Makefile.</li>    
+                <br />
+                    <pre>touch steve.c<br />touch Makefile</pre>
+                <br />
+            <li>Open the steve.c file on the command line with nano.</li>    
+                <br />
+                    <pre>nano steve.c</pre>
+                <br />
+            <li>Edit that file so that it shows the following code:</li>    
+                <p>#include &lt;linux/kernel.h&gt;</p>
+                <p>asmlinkage long sys_steve(void) {</p>
+                <p style="text-indent: 4em;">printk("There is one more thing...\n");</p>
+                <p style="text-indent: 4em;">return 0;</p>
+                <p>}</p>
+            <li>Save your work and exit the file. Now open the Makefile in nano and write the following code and save it as well:</li>    
+                <p>obj-y := steve.o</p>
+            <li>Navigate from the root directory of the kernel source code to arch/x86/syscalls and list the files in that directory. Notice that there are 2 .tbl files. Because we are working on a 64-bit Virtual Machine, we will want to edit the syscall_64.tbl file.</li>
+                <br />
+                <img src="Resources/Step17.TIFF" height="500" width="900">
+                <p></p>
+            <li>Open the syscall_64.tbl file in nano and find the last system call listed. It is most likely system call 313 finit_module because new system calls are not common. Add your new system call to the system call by adding the highlighted line to your file.</li>
+                <br />
+                <img src="Resources/Step18.TIFF" height="500" width="900">
+                <p>Explanation: You could have easily just have made your new system call 314. I chose to make it 351 in order to demonstrate that it can be any number so long as a previously declared system does not have the same number. Having it listed as common will allow it to run as both a 32-bit and a 64-bit. To be safe, you will also want to replicate this process on the syscall_32.tbl file to ensure that it works on a 32-bit architecture. steve is the name of the folder/module that we created earlier, and sys_steve is the name of the actual function within the steve.c file.</p>
+            <li>Save your work and exit the file. Naviate to the root directory of the source code and open the Makefile located there. Search for the first line listed below and replace it with the second line of code listed:</li>
+                <pre>core-y          += kernel/ mm/ fs/ ipc/ security/ crypto/ block/</pre>
+                <br />
+                <pre>core-y          += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ steve/</pre>
+                <p>Save your work and exit the file. We are done adding a system call to our kernel. Now let's navigate to our Documents directory where we will write a program to call our new system call.</p>
+            <li>Navigate back to the root of the Ubuntu source code directory and build the kernel just like in Step 8. If the build is successful, install the kernel like in Step 10 and reboot. Upon reboot you will now be ready to start modifying the kernel by creating your own custom system call.</li>
+            <br />
+            <li>Once in your Documents directory, create a directory called customCall, change into that directory, and create a file called customCall.c.</li>
+                <br />
+                    <pre>mkdir customCall<br />cd customCall<br />touch customCall.c</pre>
+                <br />
+            <li>Open up the customCall.c file in nano and save the following code inside it:</li>
+                <p>#include &lt;linux/kernel.h&gt;<br />#include &lt;linux/unistd.h&gt;<br />#include &lt;string.h&gt;</p>
+                <p>int main (int argc, char *argv[]) {</p>
+                <p style="text-indent: 4em;">syscall(351);</p>
+                <p>}</p>
+            <li>Save and close as usual. Open up a second Terminal window and from the root of the Ubuntu source code directory go to the /var/log directory. There you will type in the following command to monitor the syslog file as it changes.</li>
+                <br />
+                    <pre>tail -f syslog</pre>
+                <br />
+            <li>In the Terminal window with your customCall.c program in it compile and run it with the following command and notice that the string from the system call steve.c is displayed in the syslog file.</li>
+                <br />
+                    <pre>gcc customCall.c && ./a.out</pre>
+                <br />
+                <img src="Resources/Step23.TIFF" height="500" width="900">
+                <p></p>
+        </ol>
     </body>
 </html>
