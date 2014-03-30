@@ -6,10 +6,11 @@
 #include <linux/kernel.h> 
 #include <linux/types.h>
 #include <linux/unistd.h>
+#include <stdio.h>
 #include <sys/types.h>
 
 int main(int argc, char *argv[]) {
 	uid_t userId = syscall(102);
-	printf("%d", userId); // JD: printf comes from <stdio.h>
+	printf("%d\n", userId); // JD: printf comes from <stdio.h>
     // JD: ^^^^And a newline would be nice.
 }
