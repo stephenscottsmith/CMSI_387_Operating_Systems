@@ -11,16 +11,12 @@
 
 int main(int argc, char *argv[]) {
     int result = syscall(84, argv[1]);
-
-    // JD: All fine, but for whatever reason I couldn't get the error
-    //     message to turn up.  I tried a permissions problem, non-existent
-    //     directory, etc....are you checking for the right value of result?
+    
 	if (result == -1) {
 		char *errorMessage = "Error: The operation could not be performed!\n";
-		syscall(4, 2, errorMessage, strlen(errorMessage));
-        // JD: Ohhhhh, derp, I know now: You're using system call *4*, which
-        //     is write on *32-bit* Linux, not 64.  Because the other system
-        //     call is for 64-bit Linux (and therefore I am running this on
-        //     such a system), your errors don't show up.
+		// Changed this syscall's first argument to 1 because I wrote this 
+        // syscall for a 64-bit system, so it needs to use the 64-bit write
+        // syscall which is 1 (not 4 like on 32-bit systems) 
+        syscall(1, 2, errorMessage, strlen(errorMessage));
 	}
 }

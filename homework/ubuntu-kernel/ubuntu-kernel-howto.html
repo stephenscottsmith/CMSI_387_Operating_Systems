@@ -23,7 +23,7 @@
                     <li>Virtual Machine with 4 dedicated CPU cores, 4096 gigabytes of ram, and 30 gigabytes of hard drive space</li>
                 </ul>
                 <br />
-                <img src="Resources/Step2.TIFF" height="410" width="575">
+                <img src="Resources/Step2.tiff" height="410" width="575">
                 <p>
                     Tip: While the number of CPU's can be taken down as far as 1 dedicated core, compilation time of the kernel will be significantly decreased if more cores are allocated for the Ubuntu Virtual Machine. If you are doing a 64-bit kernel that you allocating 4 gigabytes of ram will also help. 30 gigabytes of hard drive space is the safest amount because downloading and compiling will take up a lot of space.
                 </p>
@@ -55,7 +55,7 @@
                 <br />
                     <pre>cd ..<br />ls *.deb</pre>
                 <br />
-                <img src="Resources/Step9.TIFF" height="500" width="900">
+                <img src="Resources/Step9.tiff" height="500" width="900">
                 <p></p>
             <li>Install the new packages (and the kernel as a result) with the dpkg -i and reboot commands:</li>
                 <br />
@@ -66,7 +66,7 @@
                 <br />
                     <pre>uname -a</pre>
                 <br />
-                <img src="Resources/Step11.TIFF" height="500" width="900">
+                <img src="Resources/Step11.tiff" height="500" width="900">
                 <p></p>
             <li>Now that you have successfully changed the kernel, you will now write a custom system call. Start by going to the root directory of the Ubuntu source code folder. There, you will create a new file. For purposes of this demonstration, we have called it "steve".</li>  
                 <br />
@@ -90,11 +90,11 @@
                 <p>obj-y := steve.o</p>
             <li>Navigate from the root directory of the kernel source code to arch/x86/syscalls and list the files in that directory. Notice that there are 2 .tbl files. Because we are working on a 64-bit Virtual Machine, we will want to edit the syscall_64.tbl file.</li>
                 <br />
-                <img src="Resources/Step17.TIFF" height="500" width="900">
+                <img src="Resources/Step17.tiff" height="500" width="900">
                 <p></p>
             <li>Open the syscall_64.tbl file in nano and find the last system call listed. It is most likely system call 313 finit_module because new system calls are not common. Add your new system call to the system call by adding the highlighted line to your file.</li>
                 <br />
-                <img src="Resources/Step18.TIFF" height="500" width="900">
+                <img src="Resources/Step18.tiff" height="500" width="900">
                 <p>Explanation: You could have easily just have made your new system call 314. I chose to make it 351 in order to demonstrate that it can be any number so long as a previously declared system does not have the same number. Having it listed as common will allow it to run as both a 32-bit and a 64-bit. To be safe, you will also want to replicate this process on the syscall_32.tbl file to ensure that it works on a 32-bit architecture. steve is the name of the folder/module that we created earlier, and sys_steve is the name of the actual function within the steve.c file.</p>
             <li>Save your work and exit the file. Naviate to the root directory of the source code and open the Makefile located there. Search for the first line listed below and replace it with the second line of code listed:</li>
                 <pre>core-y          += kernel/ mm/ fs/ ipc/ security/ crypto/ block/</pre>
@@ -120,7 +120,7 @@
                 <br />
                     <pre>gcc customCall.c && ./a.out</pre>
                 <br />
-                <img src="Resources/Step23.TIFF" height="500" width="900">
+                <img src="Resources/Step23.tiff" height="500" width="900">
                 <p></p>
             <li>If you want to create a patch file so others can download and apply your customization, navigate to the root of the Ubuntu source code directory and type the following command (This creates a customPatch file in your home directory that you can send to others!):</li>
                 <br />
