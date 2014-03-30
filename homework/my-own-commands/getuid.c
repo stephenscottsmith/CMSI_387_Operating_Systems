@@ -11,6 +11,5 @@
 
 int main(int argc, char *argv[]) {
 	uid_t userId = syscall(102);
-	printf("%d\n", userId); // JD: printf comes from <stdio.h>
-    // JD: ^^^^And a newline would be nice.
+	printf("%d\n", userId);
 }
