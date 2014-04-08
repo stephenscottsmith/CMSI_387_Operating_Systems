@@ -8,25 +8,12 @@
 #define MAX_NUMBER_ARGUMENTS 10
 #define DELIM " \n"
 
-// I need a function that modifies the input string by dividing it
-// into an array of char*
-
-// 1. Loop to ask for next command 
-// (will need a terminating condition to exit loop)
-
-// 2. Acknoledge the & and implement cd in a special way
-// will happen before I fork
-
-// 3. Super secret system call (351)
-
-
 // Things I've learned/relearned about C
 // 1. strlen returns the length of the 
 //    string without the null character
 // 2. fgets has the characters of the input
 //    string with a \n at the end, needed to replace
 //    with a \0
-
 
 int main(void) {
     /* Command and it's argument array */
