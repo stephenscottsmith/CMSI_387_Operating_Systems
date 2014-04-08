@@ -46,7 +46,7 @@ int main(void) {
 
         if (command[strlen(command) - 1] == '&') {
                 background = 1;
-                printf("backgrounding");
+                // printf("backgrounding");
         }
 
         while (command[strlen(command) - 1] == ' ') {
@@ -54,16 +54,16 @@ int main(void) {
         }
         // parse command into individual arguments
         // site: http://www.lainoox.com/tokenize-string-c-strtok/
-        char *arg = strtok(command, DELIM);
+        char *delim = " \n";
+        char *arg = strtok(command, delim);
         int argIndex = 0;
         while (arg != NULL) {
-            printf("HERE: %s\n", arg);
             arguments[argIndex] = arg;
-            arg = strtok(NULL, DELIM);
+            arg = strtok(NULL, delim);
             argIndex++;
         }
-
-
+        arguments[argIndex] = NULL;
+        
         // If there are arguments continue else skip this
         // iteration of the loop
         if ((strlen(command) - 1) != 0) {
@@ -81,11 +81,9 @@ int main(void) {
                 pid = fork();
                 if (pid < 0) {
                     /* Error condition. */
-                    fprintf(stderr, "Fork failed\n");
                     return -1;
                 } else if (pid == 0) {
                     /* Child process. */
-                    printf("%s\n", arguments[0]);
                     execvp(arguments[0], arguments);
                 } else {
                     /* Parent process. */
@@ -93,7 +91,6 @@ int main(void) {
                     if (!background) {
                         wait(&result);
                     }
-                    printf("All done; result = %d\n", result);
                 }
             }
         }
