@@ -95,9 +95,9 @@ int main(void) {
                     }
                     printf("All done; result = %d\n", result);
                 }
-
-                return 0;
             }
         }
     }
+
+    return 0;
 }
