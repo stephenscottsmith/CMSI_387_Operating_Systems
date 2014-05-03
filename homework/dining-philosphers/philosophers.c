@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define WANTNOMS 0
+#define WANTINGNOMS 0
 #define NOMMING 1
 #define PHILOSOPHIZING 2 
 
@@ -25,7 +25,7 @@ void printPhilosophers () {
 			printf("  T  ");
 		} else if (philosopherStatus[i] == NOMMING) {
 			printf("  H  ");
-		} else if (philosopherStatus[i] == WANTNOMS) {
+		} else if (philosopherStatus[i] == WANTINGNOMS) {
 			printf("  E  ");
 		}
 	}
@@ -33,9 +33,23 @@ void printPhilosophers () {
 }
 
 
+
+
 void* dineThePhilosophers (void* philosopher) {
-	int philosopherNumber = *(int*) philosopher;
+	int currentPhilosopher = *(int*) philosopher;
 	printPhilosophers();
+
+	while (1) {
+		printPhilosophers();
+
+		if (philosopherStatus[currentPhilosopher] == PHILOSOPHIZING) {
+			philosophizeAboutNoms(currentPhilosopher);
+		} else if (philosopherStatus[currentPhilosopher] == NOMING) {
+			nom(currentPhilosopher);
+		} else if (philosopherStatus[currentPhilosopher] == WANTINGNOMS) {
+			finishNoming(currentPhilosopher);
+		}
+	}
 }
 
 
