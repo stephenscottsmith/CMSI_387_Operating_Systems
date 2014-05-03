@@ -32,7 +32,17 @@ void printPhilosophers () {
 	printf("\n");
 }
 
+// Ah, sample code for random wait. NOM NOM NOM.
+int randomWait(int bound) {
+    int wait = rand() % bound;
+    sleep(wait);
+    return wait;
+}
 
+void philosophizeAboutNoms (int philosopher) {
+	randomWait(5);
+	philosopherStatus[philosopher] = WANTINGNOMS;
+}
 
 
 void* dineThePhilosophers (void* philosopher) {
@@ -40,14 +50,13 @@ void* dineThePhilosophers (void* philosopher) {
 	printPhilosophers();
 
 	while (1) {
-		printPhilosophers();
 
 		if (philosopherStatus[currentPhilosopher] == PHILOSOPHIZING) {
 			philosophizeAboutNoms(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == NOMING) {
 			nom(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == WANTINGNOMS) {
-			finishNoming(currentPhilosopher);
+			finishNomming(currentPhilosopher);
 		}
 	}
 }
