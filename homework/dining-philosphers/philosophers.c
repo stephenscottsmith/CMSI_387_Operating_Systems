@@ -44,6 +44,20 @@ void philosophizeAboutNoms (int philosopher) {
 	philosopherStatus[philosopher] = WANTINGNOMS;
 }
 
+void nom (int philosopher) {
+	getChopstick(philosopher);
+	getChopstick((philosopher + 1) % 5);
+	philosopherStatus[philosopher] = NOMMING;
+	randomWait(5);
+}
+
+void pickupChopstick (int chopstick) {
+
+}
+
+void putdownChopstick (int chopstick) {
+	
+}
 
 void* dineThePhilosophers (void* philosopher) {
 	int currentPhilosopher = *(int*) philosopher;
