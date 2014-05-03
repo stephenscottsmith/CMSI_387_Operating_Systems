@@ -20,7 +20,7 @@ int main () {
 		philosopherStatus[i] = PHILOSOPHIZING;
 		philosopherNumber[i] = i;
 		chopstickStatus[i] = 0;
-		pthread_mutex_init(&chopsticks[i], NULL);
+		pthread_mutex_init(&chopstickNumber[i], NULL);
 		pthread_create(&philosphers[i], NULL, dineThePhilosophers, &philosopherNumber[i]);
 	}
 
