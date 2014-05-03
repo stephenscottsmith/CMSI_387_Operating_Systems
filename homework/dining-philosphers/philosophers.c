@@ -6,9 +6,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define WANTINGNOMS 0
-#define NOMMING 1
-#define PHILOSOPHIZING 2 
+#define WANTINGNOMS 0     // HUNGRY
+#define NOMMING 1		  // EATING
+#define PHILOSOPHIZING 2  // THINKING
 
 int philosopherNumber[5];
 int philosopherStatus[5];
@@ -29,7 +29,7 @@ void printPhilosophers () {
 			printf("  H  ");
 		// Eating
 		} else if (philosopherStatus[i] == NOMMING) {
-			printf("  00000  ");
+			printf("  E  ");
 		}
 	}
 	printf("\n");
@@ -80,9 +80,9 @@ void* dineThePhilosophers (void* philosopher) {
 
 		if (philosopherStatus[currentPhilosopher] == PHILOSOPHIZING) {
 			philosophizeAboutNoms(currentPhilosopher);
-		} else if (philosopherStatus[currentPhilosopher] == NOMMING) {
-			nom(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == WANTINGNOMS) {
+			nom(currentPhilosopher);
+		} else if (philosopherStatus[currentPhilosopher] == NOMMING) {
 			finishNomming(currentPhilosopher);
 		}
 	}
