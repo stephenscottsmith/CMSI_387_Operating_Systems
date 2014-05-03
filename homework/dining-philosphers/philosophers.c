@@ -6,21 +6,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define NUMBER_OF_PHILOSOPHERS 5
 #define WANTINGNOMS 0     // HUNGRY
 #define NOMMING 1		  // EATING
 #define PHILOSOPHIZING 2  // THINKING
 
-int philosopherNumber[5];
-int philosopherStatus[5];
+int philosopherNumber[NUMBER_OF_PHILOSOPHERS];
+int philosopherStatus[NUMBER_OF_PHILOSOPHERS];
 
-pthread_mutex_t chopstickNumber[5];
-int chopstickStatus[5];
+pthread_mutex_t chopstickNumber[NUMBER_OF_PHILOSOPHERS];
+int chopstickStatus[NUMBER_OF_PHILOSOPHERS];
 
 
 void printPhilosophers () {
 	int i;
 
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
 		// Thinking
 		if (philosopherStatus[i] == PHILOSOPHIZING) {
 			printf("  T  ");
@@ -43,15 +44,15 @@ int randomWait(int bound) {
 }
 
 void philosophizeAboutNoms (int philosopher) {
-	randomWait(5);
+	randomWait(NUMBER_OF_PHILOSOPHERS);
 	philosopherStatus[philosopher] = WANTINGNOMS;
 }
 
 void nom (int philosopher) {
 	pickupChopstick(philosopher);
-	pickupChopstick((philosopher + 1) % 5);
+	pickupChopstick((philosopher + 1) % NUMBER_OF_PHILOSOPHERS);
 	philosopherStatus[philosopher] = NOMMING;
-	randomWait(5);
+	randomWait(NUMBER_OF_PHILOSOPHERS);
 }
 
 void pickupChopstick (int chopstick) {
@@ -66,7 +67,7 @@ void putdownChopstick (int chopstick) {
 
 void finishNomming (int philosopher) {
 	putdownChopstick(philosopher);
-	putdownChopstick((philosopher + 1) % 5);
+	putdownChopstick((philosopher + 1) % NUMBER_OF_PHILOSOPHERS);
 	philosopherStatus[philosopher] = PHILOSOPHIZING;
 }
 
@@ -91,10 +92,10 @@ void* dineThePhilosophers (void* philosopher) {
 
 int main () {
 	int i;
-	// Initialize thread with 5 philosophers
-	pthread_t philosphers[5];
+	// Initialize thread with NUMBER_OF_PHILOSOPHERS philosophers
+	pthread_t philosphers[NUMBER_OF_PHILOSOPHERS];
 
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
 		philosopherStatus[i] = PHILOSOPHIZING;
 		philosopherNumber[i] = i;
 		chopstickStatus[i] = 0;
@@ -102,7 +103,7 @@ int main () {
 		pthread_create(&philosphers[i], NULL, dineThePhilosophers, &philosopherNumber[i]);
 	}
 
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
 		pthread_join(philosphers[i], NULL);
 	}
 
