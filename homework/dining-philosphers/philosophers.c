@@ -5,10 +5,10 @@
 #define NOMMING 1
 #define PHILOSOPHIZING 2 
 
-int philosopher[5];
+int philosopherNumber[5];
 int philosopherStatus[5];
 
-pthread_mutex_t chopsticks[5];
+pthread_mutex_t chopstickNumber[5];
 int chopstickStatus[5];
 
 int main () {
@@ -18,10 +18,10 @@ int main () {
 
 	for (i = 0; i < 5; i++) {
 		philosopherStatus[i] = PHILOSOPHIZING;
-		philosopher[i] = i;
+		philosopherNumber[i] = i;
 		chopstickStatus[i] = 0;
 		pthread_mutex_init(&chopsticks[i], NULL);
-		pthread_create(&philosphers[i], NULL, dineThePhilosophers, &philosopher[i]);
+		pthread_create(&philosphers[i], NULL, dineThePhilosophers, &philosopherNumber[i]);
 	}
 
 	for (i = 0; i < 5; i++) {
