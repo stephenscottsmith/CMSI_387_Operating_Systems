@@ -29,7 +29,7 @@ void printPhilosophers () {
 			printf("  H  ");
 		// Eating
 		} else if (philosopherStatus[i] == NOMMING) {
-			printf("  E  ");
+			printf("  00000  ");
 		}
 	}
 	printf("\n");
@@ -77,7 +77,7 @@ void* dineThePhilosophers (void* philosopher) {
 	while (1) {
 
 		printPhilosophers();
-		
+
 		if (philosopherStatus[currentPhilosopher] == PHILOSOPHIZING) {
 			philosophizeAboutNoms(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == NOMMING) {
