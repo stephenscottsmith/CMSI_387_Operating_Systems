@@ -21,11 +21,14 @@ void printPhilosophers () {
 	int i;
 
 	for (i = 0; i < 5; i++) {
+		// Thinking
 		if (philosopherStatus[i] == PHILOSOPHIZING) {
 			printf("  T  ");
-		} else if (philosopherStatus[i] == NOMMING) {
-			printf("  H  ");
+		// Hungry
 		} else if (philosopherStatus[i] == WANTINGNOMS) {
+			printf("  H  ");
+		// Eating
+		} else if (philosopherStatus[i] == NOMMING) {
 			printf("  E  ");
 		}
 	}
@@ -45,18 +48,26 @@ void philosophizeAboutNoms (int philosopher) {
 }
 
 void nom (int philosopher) {
-	getChopstick(philosopher);
-	getChopstick((philosopher + 1) % 5);
+	pickupChopstick(philosopher);
+	pickupChopstick((philosopher + 1) % 5);
 	philosopherStatus[philosopher] = NOMMING;
 	randomWait(5);
 }
 
 void pickupChopstick (int chopstick) {
-
+	pthread_mutex_lock(&chopstickNumber[chopstick]);
+	chopstickStatus[chopstick] += 1;
 }
 
 void putdownChopstick (int chopstick) {
-	
+	pthread_mutex_unlock(&chopstickNumber[chopstick]);
+	chopstickStatus[chopstick] -= 1;
+}
+
+void finishNomming (int philosopher) {
+	putdownChopstick(philosopher);
+	putdownChopstick((philosopher + 1) % 5);
+	philosopherStatus[philosopher] = PHILOSOPHIZING;
 }
 
 void* dineThePhilosophers (void* philosopher) {
@@ -67,7 +78,7 @@ void* dineThePhilosophers (void* philosopher) {
 
 		if (philosopherStatus[currentPhilosopher] == PHILOSOPHIZING) {
 			philosophizeAboutNoms(currentPhilosopher);
-		} else if (philosopherStatus[currentPhilosopher] == NOMING) {
+		} else if (philosopherStatus[currentPhilosopher] == NOMMING) {
 			nom(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == WANTINGNOMS) {
 			finishNomming(currentPhilosopher);
