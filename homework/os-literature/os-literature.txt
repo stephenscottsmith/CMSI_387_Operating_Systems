@@ -1,0 +1,48 @@
+Leslie Lamport, Teaching concurrency, ACM SIGACT News, v.40 n.1, March 2009
+
+Document in Repo: Lamport.pdf
+
+Published in: Newsletter
+	      ACM SIGACT News
+	      Volume 40 Issue 1, March 2009 
+	      Pages 58-62
+
+
+“For most of the 1970s, one “solved” the mutual exclusion problem by using semaphores or monitors or conditional critical regions or some other language construct. This is like solving the sorting problem by using a programming language with a sort command.”
+
+
+
+==========================================================================================
+
+H. F. Tibbals, A structure for interprocess communication in a data communications handler, Proceedings of the 1976 annual conference, p.356-360, October 20-22, 1976, Houston, Texas, USA
+
+Document in Repo: Tibbals.pdf
+
+Published in: Proceeding
+	      ACM '76 Proceedings of the 1976 annual conference
+	      Pages 356-360 
+
+
+
+==========================================================================================
+
+Craig E. Wills, Process synchronization and IPC, ACM Computing Surveys (CSUR), v.28 n.1, p.209-211, March 1996
+
+Document in Repo: Wills.pdf
+
+Published in: Journal
+	      ACM Computing Surveys (CSUR) Surveys Homepage
+	      Volume 28 Issue 1, March 1996 
+	      Pages 209-211
+		
+
+
+
+
+
+
+What does it say?
+
+Quality of the paper
+where are they from
+publication
