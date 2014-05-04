@@ -1,0 +1,11 @@
+Both of the 1 Linux and 1b Mac images show the hot mess of the backgrounded thread-java program. I performed simple ls commands to show that it was still possible to run commands even though the thread-java program was still running. 
+
+Things became different between Mac OS and Ubuntu when I had to search out the process ID numbers to determine how many threads were being run for each process on its respective OS.
+
+Mac
+Mac OS created 15 threads for the thread-java program seen in the 2 Mac image. Mac OS displayed the threads under 1 process ID.
+
+Linux
+The Ubuntu OS created 18 threads for the thread-java program. However, it appeared that only the last 4 (seen in my 2 Linux image) were actually given any significant CPU time. Linux appears to display the threads as separate processes all under one parent process ID. 
+
+Both Mac and Linux appear to recognize the low priority of this program and allocate decreasing amounts of CPU time. 
