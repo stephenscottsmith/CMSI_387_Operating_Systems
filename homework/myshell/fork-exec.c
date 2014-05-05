@@ -15,6 +15,8 @@
 //    string with a \n at the end, needed to replace
 //    with a \0
 
+// JD: The forCe is strong in this one.
+
 int main(void) {
     /* Command and it's argument array */
     char command[MAX_COMMAND_LENGTH];
@@ -32,7 +34,9 @@ int main(void) {
             
 
         if (command[strlen(command) - 1] == '&') {
-                background = 1;
+            // JD: This does background correctly, but then the executed command fails
+            //     (e.g., "ping localhost &").  Hope you can see why.
+                background = 1; // JD: Why indent this deep?
                 // printf("backgrounding");
         }
 
