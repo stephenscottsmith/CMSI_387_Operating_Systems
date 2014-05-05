@@ -126,7 +126,18 @@
                 <br />
                     <pre>git diff master > ~/customPatch</pre>
                 <br />
-
+            <li>To cap everything off, create a new files with the following code to invoke your brand spankin'
+            new system call. You can compile it with gcc, run and view its effects just like with the previous
+            C program.</li>
+                <br/>
+                    <p>#include &lt;linux/types.h&gt;</p>
+                    <p>#include &lt;linux/unistd.h&gt;</p>
+                    <p>#include &lt;string.h&gt;</p>
+                    <p>int main (int argc, char *argv[]) {</p>
+                    <p style="text-indent: 4em;">syscall(351);</p>
+                    <p style="text-indent: 4em;">return 0;</p>
+                    <p>}</p>
+                <br/>
         </ol>
         <p>Congratulations! You have successfully modified and installed a custom Ubuntu kernel!</p>
 
