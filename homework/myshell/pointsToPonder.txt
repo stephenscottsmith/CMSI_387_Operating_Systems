@@ -1,6 +1,9 @@
 1. Why did the cd command get special mention in this assignment?
 The cd command received special mention because it does not have an executable file that is normally found by exec(). exec() looks for commands’s executable files, but because cd does not have one, then it requires special attention. It is special in that the way a process is forked. When a shell (like bash or mine) executes a command, it creates another shell that eventually is given the code of the command that was passed. If cd were passed in as the command to run, it would only change the working directory of the cloned process. When it returns to the parent process, the parent process’s working directory remains unchanged. Thus, special handling of this command is required to execute successfully. 
 
+# JD: Take note, it's the second part of this answer that is actually right.
+#     The first part about whether there is a chdir/cd executable is only
+#     incidental.
 
 2. Can your shell run scripts? Why or why not?
 My shell can run scripts if it is input properly. It requires passing a text file with the commands in it into the executable of my shell like the following:
@@ -8,6 +11,10 @@ My shell can run scripts if it is input properly. It requires passing a text fil
 It can also process it inside it if the commands file has the ability to be executed by the user. Once inside my shell, it can run another program if invoked like the following:
 —->./commands.txt
 
+# JD: Does that not just blow your mind?  You're scripting man, scripting!
 
 3. Does Ctrl-D exit your shell? Why or why not?
 Ctrl-D does exit my shell because it continues to run until it detects an EOF input. It can also exit if ‘quit’ is input as the command because I built it in that way. 
+
+# JD: Knowledge you have gained.  Insight you have shown.  You are ready to
+#     blow up the Death Star.

@@ -8,4 +8,9 @@ Mac OS created 15 threads for the thread-java program seen in the 2 Mac image. M
 Linux
 The Ubuntu OS created 18 threads for the thread-java program. However, it appeared that only the last 4 (seen in my 2 Linux image) were actually given any significant CPU time. Linux appears to display the threads as separate processes all under one parent process ID. 
 
-Both Mac and Linux appear to recognize the low priority of this program and allocate decreasing amounts of CPU time. 
+Both Mac and Linux appear to recognize the low priority of this program and allocate decreasing amounts of CPU time.
+
+# JD: Nicely done, with one hitch---there's a little more information that you could have gotten
+#     about "threads as separate processes" in Linux which you didn't mention here.  Seeing that
+#     would have been a small dunk, but I'll give some benefit of the doubt because you did after
+#     all figure out the -L option.
