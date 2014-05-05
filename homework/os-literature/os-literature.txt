@@ -7,42 +7,36 @@ Published in: Newsletter
 	      Volume 40 Issue 1, March 2009 
 	      Pages 58-62
 
+Leslie Lamport’s article from the ACM newsletter proposes that the methods by which concurrency is taught lack the necessary substance for a complete understanding of the problems that it presents. He goes on to write that, “For most of the 1970s, one “solved” the mutual exclusion problem by using semaphores or monitors or conditional critical regions or some other language construct. This is like solving the sorting problem by using a programming language with a sort command.” Lamport believes that people attempting to understand, solve, and/or implement concurrency properly usually get hung up on the specifics. Computer scientists and engineers will ask questions like “What language should we use?” and “Does a certain language have a construct built in that can help solve the concurrency issue?”. The level of detail of these questions are far too specific for Lamport who thinks that if a person trying to utilize concurrency, or just simply understand it, should not bother with questions like these. Instead, that person should try to understand the algorithm or the computation involved in concurrency before actually implementing it. Through the use of basic mathematics and a sufficient understanding of the algorithms used in solving concurrency, one is more suited to both implement and perhaps even come up with a better solution. 
 
-“For most of the 1970s, one “solved” the mutual exclusion problem by using semaphores or monitors or conditional critical regions or some other language construct. This is like solving the sorting problem by using a programming language with a sort command.”
-
-
+The article comes from a newsletter sent out by the ACM. While the ACM is a more than sufficient publication in terms of its validity and Lamport’s credentials speak for themselves(having worked at Microsoft, winning the 2013 Turing Award, and creating LaTeX), the article’s vibe came off as more of a letter to the editor than a voice of authority on concurrency. I do not believe Lamport was trying to bring up anything truly groundbreaking. He simply is proposing a few ideas for people to consider when they are trying to implement something that will involve concurrency. I feel that Lamport wants people to fully understand the concepts of concurrency on a mathematical level before asking about the specifics of its implementation.
 
 ==========================================================================================
 
-H. F. Tibbals, A structure for interprocess communication in a data communications handler, Proceedings of the 1976 annual conference, p.356-360, October 20-22, 1976, Houston, Texas, USA
+B. K. Szymanski, A simple solution to Lamport's concurrent programming problem with linear wait, Proceedings of the 2nd international conference on Supercomputing, p.621-626, June 1988, St. Malo, France
 
-Document in Repo: Tibbals.pdf
+Document in Repo: Szymanski.pdf
 
 Published in: Proceeding
-	      ACM '76 Proceedings of the 1976 annual conference
-	      Pages 356-360 
+	      ICS '88 Proceedings of the 2nd international conference on Supercomputing
+	      Pages 621 - 626 
 
+This article directly references and builds upon Gary Peterson’s “A New Solution to Lamport’s Concurrent Programming Problem Using Small Shared Variables.” Szymanski’s algorithm is similar to other concurrency algorithm’s through its use of mutual exclusion and semaphors. He covers the instances in which read errors occur and when processes fail and have to restart. In his solution, he proposes that shared memory should be restricted in the event that a process fails. Through the use of five distinct values of shared memory per process, Szymanski’s algorithm does not worry about process failures and restarts and errors occurring during the writing process. 
 
+Szymanski’s paper covered a number of other solutions that have been presented a countless other papers. It was a far more informed opinion and solution to concurrency issue than the first article I read above. It almost seemed as though he was illustrating an algorithmic proof to me in such a way that he was building upon what previous people had done, connecting the dots, and adding something of his own to the solution. His credentials are also satisfactory being a professor at the Rensselaer Polytechnic Institute. A look at their website shows that there is a clear focus on business and the sciences. I would also tend to think that an international conference has a more authoritative voice than that of a newsletter.
 
 ==========================================================================================
 
 Craig E. Wills, Process synchronization and IPC, ACM Computing Surveys (CSUR), v.28 n.1, p.209-211, March 1996
 
-Document in Repo: Wills.pdf
+Document in Repo: Wills
+Wills.pdf
 
 Published in: Journal
 	      ACM Computing Surveys (CSUR) Surveys Homepage
 	      Volume 28 Issue 1, March 1996 
 	      Pages 209-211
 		
+Wills proposes a number of best practices for process synchronization and IPC (interprocess communication). He begins by dividing synchronization mechanisms into four types: software only, hardware support, operating-system support, language support, and hybrid solutions. He explains that software-based synchronization is achieved through the use of shared variables. Hardware can also assist in the synchronization process by not allowing interrupts to occur when a process is inside of its critical section. Wills also explains semaphores and their origins in Dijkstra’s paper. Wills mentions monitors, mechanisms that are more suited for both uni-processor and multi-processor systems, and IPCs, a way by which one process sends a message to another process, as good ways to solve concurrency issues.
 
-
-
-
-
-
-What does it say?
-
-Quality of the paper
-where are they from
-publication
+Wills makes a well-rounded list of the many ways concurrency issues have been solved. He does not, however, add any of his own ideas; instead, he only explains the best practices for using such solutions. Wills is a professor at Worcester Polytechnic Institute which, according to Wikipedia, is a tier-one school as noted by U.S. News & Report. I am unsure as to how they gauge schools by tier, but it would seem that WPI is well-respected in academia. Being published in an ACM Journal also lends me to believe that these practices are fairly widely accepted in the field of concurrency. 
