@@ -1,5 +1,12 @@
 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-*
+* 
+
+// This first block is the disk’s superblock where the first 32 bits pertain to the  
+// inode count in little endian form. This disk has 4. The second 32 bits hold the 
+// block count which is 200 (also in little endian form). The next important thing to 
+// note here is the line at 00000450. The third set of 32 bits in that row denote the 
+// location of the first group. In this case, it’s located at 0x800.
+
 00000400  40 00 00 00 00 02 00 00  19 00 00 00 e4 01 00 00  |@...............|
 00000410  35 00 00 00 01 00 00 00  00 00 00 00 00 00 00 00  |5...............|
 00000420  00 20 00 00 00 20 00 00  40 00 00 00 be e8 44 53  |. ... ..@.....DS|
@@ -22,6 +29,11 @@
 00000560  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000570  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+// This is our first group and the third set of 32 bits tells us where the inode
+// table starts. In this case it is at the 6. Then we multiply 6 times the block 
+// size of 0x400 (or 1024 bytes) to get 0x1800
+
 00000800  04 00 00 00 05 00 00 00  06 00 00 00 e1 01 31 00  |..............1.|
 00000810  03 00 04 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000820  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
@@ -35,10 +47,21 @@
 00001400  ff 7f 00 00 00 00 00 00  ff ff ff ff ff ff ff ff  |................|
 00001410  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
 *
+
+// This is where the inode structure begins. We should expect to find inodes 
+// at 1800, 1880, 1900, 1980 etc. Since inode 1 is in 1800, we expect inode 2,
+// the root directory’s inode, to be located at 1880.
+
 00001800  00 00 00 00 00 00 00 00  f8 e5 44 53 f8 e5 44 53  |..........DS..DS|
 00001810  f8 e5 44 53 00 00 00 00  00 00 00 00 00 00 00 00  |..DS............|
 00001820  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+// This is the root inode. The first 2 bytes, ed 41, translate to:
+// 0100 0001 1110 1101. The 9 low order bits correspond to the directory’s 
+// permissions, which in this case would be rwxr-xr-x. The higher order 0100
+// bits denote that it is a directory.
+
 00001880  ed 41 e8 03 00 04 00 00  bd f2 44 53 b4 f2 44 53  |.A........DS..DS|
 00001890  b4 f2 44 53 00 00 00 00  e8 03 04 00 02 00 00 00  |..DS............|
 000018a0  00 00 00 00 05 00 00 00  0e 00 00 00 00 00 00 00  |................|
@@ -59,6 +82,9 @@
 00001d50  19 00 00 00 1a 00 00 00  00 00 00 00 00 00 00 00  |................|
 00001d60  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+
+// inode for the newdir directory
 00001d80  fd 41 e8 03 00 04 00 00  cc f0 44 53 c7 f0 44 53  |.A........DS..DS|
 00001d90  c7 f0 44 53 00 00 00 00  e8 03 02 00 02 00 00 00  |..DS............|
 00001da0  00 00 00 00 03 00 00 00  1c 00 00 00 00 00 00 00  |................|
@@ -73,6 +99,9 @@
 *
 00001e60  00 00 00 00 ed e2 77 1e  00 00 00 00 00 00 00 00  |......w.........|
 00001e70  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+
+
+// I believe this is the inode for the nonempty2.txt and its hard link.
 00001e80  b4 81 e8 03 3e 00 00 00  c0 f2 44 53 b4 f2 44 53  |....>.....DS..DS|
 00001e90  3e e9 44 53 00 00 00 00  e8 03 02 00 02 00 00 00  |>.DS............|
 00001ea0  00 00 00 00 01 00 00 00  1e 00 00 00 00 00 00 00  |................|
@@ -80,6 +109,10 @@
 *
 00001ee0  00 00 00 00 ee e2 77 1e  00 00 00 00 00 00 00 00  |......w.........|
 00001ef0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+
+
+
+// This is the inode for the sym link to nonempty1.txt
 00001f00  ff a1 e8 03 10 00 00 00  cc f0 44 53 c7 f0 44 53  |..........DS..DS|
 00001f10  c7 f0 44 53 00 00 00 00  e8 03 01 00 00 00 00 00  |..DS............|
 00001f20  00 00 00 00 01 00 00 00  2e 2e 2f 6e 6f 6e 65 6d  |........../nonem|
@@ -89,6 +122,13 @@
 00001f60  00 00 00 00 ef e2 77 1e  00 00 00 00 00 00 00 00  |......w.........|
 00001f70  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+
+
+// These are the directory entries for all of the files, links and directories 
+// within the disk image that I made. Listed in it are the root directory denoted
+// by the . and then the .. on the first lines 12 bytes. Then the lost+found, directory
+// and the 2 text files that I created are listed. 
 00003800  02 00 00 00 0c 00 01 02  2e 00 00 00 02 00 00 00  |................|
 00003810  0c 00 02 02 2e 2e 00 00  0b 00 00 00 14 00 0a 02  |................|
 00003820  6c 6f 73 74 2b 66 6f 75  6e 64 00 00 0c 00 00 00  |lost+found......|
@@ -100,6 +140,10 @@
 00003880  6b 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |k...............|
 00003890  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+
+
+// This is the data block for the lost+found directory
 00003c00  0b 00 00 00 0c 00 01 02  2e 00 00 00 02 00 00 00  |................|
 00003c10  f4 03 02 02 2e 2e 00 00  00 00 00 00 00 00 00 00  |................|
 00003c20  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
@@ -140,6 +184,11 @@
 00006c00  00 00 00 00 03 00 00 00  00 00 00 00 00 00 00 00  |................|
 00006c10  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+
+
+// This is the data block for the newdir directory
+
 00007000  0c 00 00 00 0c 00 01 02  2e 00 00 00 02 00 00 00  |................|
 00007010  0c 00 02 02 2e 2e 00 00  0e 00 00 00 18 00 0d 01  |................|
 00007020  6e 6f 6e 65 6d 70 74 79  32 2e 74 78 74 00 00 00  |nonempty2.txt...|
@@ -147,11 +196,19 @@
 00007040  31 53 79 6d 4c 69 6e 6b  00 00 00 00 00 00 00 00  |1SymLink........|
 00007050  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+
+
+// This is the data block for the nonempty1.txt
 00007400  54 68 69 73 20 69 73 20  61 20 62 61 73 69 63 2c  |This is a basic,|
 00007410  20 6e 6f 6e 2d 65 6d 70  74 79 20 74 65 78 74 20  | non-empty text |
 00007420  66 69 6c 65 2e 20 45 4e  4a 4f 59 2e 0a 00 00 00  |file. ENJOY.....|
 00007430  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 *
+
+
+
+// This is the data block for the nonempty2.txt
 00007800  54 68 69 73 20 69 73 20  61 20 73 65 63 6f 6e 64  |This is a second|
 00007810  20 6e 6f 6e 2d 65 6d 70  74 79 20 74 65 78 74 20  | non-empty text |
 00007820  66 69 6c 65 2e 20 49 74  20 69 6c 6c 75 73 74 72  |file. It illustr|
