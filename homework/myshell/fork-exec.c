@@ -36,7 +36,7 @@ int main(void) {
         if (command[strlen(command) - 1] == '&') {
             // JD: This does background correctly, but then the executed command fails
             //     (e.g., "ping localhost &").  Hope you can see why.
-                background = 1; // JD: Why indent this deep?
+            background = 1; // JD: Why indent this deep?
                 // printf("backgrounding");
         }
 

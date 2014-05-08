@@ -20,6 +20,9 @@ int chopstickStatus[NUMBER_OF_PHILOSOPHERS];
 // JD: Missing from this display is the chopstick state.  Not absolutely
 //     required, but as you might imagine this would be really helpful
 //     in following what's going on.
+
+// Added ascii art: http://en.wikipedia.org/wiki/List_of_emoticons
+// Eating will have chopsticks up
 void printPhilosophers () {
 	int i;
 
@@ -45,22 +48,6 @@ int randomWait(int bound) {
     return wait;
 }
 
-void philosophizeAboutNoms (int philosopher) {
-    // JD: Why is the number of philosophers the basis for waiting?  This implies
-    //     that your philosopher will tend to wait longer if there are more
-    //     philosophers at the table...?
-	randomWait(NUMBER_OF_PHILOSOPHERS);
-	philosopherStatus[philosopher] = HUNGRY;
-}
-
-void nom (int philosopher) {
-    // JD: You need a forward declaration of pickupChopstick.
-	pickupChopstick(philosopher);
-	pickupChopstick((philosopher + 1) % NUMBER_OF_PHILOSOPHERS);
-	philosopherStatus[philosopher] = EATING;
-	randomWait(NUMBER_OF_PHILOSOPHERS);
-}
-
 void pickupChopstick (int chopstick) {
 	pthread_mutex_lock(&chopstickNumber[chopstick]);
     // JD: Sanity check needed here---make sure the chopstick isn't taken
@@ -76,6 +63,22 @@ void putdownChopstick (int chopstick) {
     //     isn't available before you put it down.
 	pthread_mutex_unlock(&chopstickNumber[chopstick]);
 	chopstickStatus[chopstick] -= 1;
+}
+
+void thinkAboutEating (int philosopher) {
+    // JD: Why is the number of philosophers the basis for waiting?  This implies
+    //     that your philosopher will tend to wait longer if there are more
+    //     philosophers at the table...?
+	randomWait(NUMBER_OF_PHILOSOPHERS);
+	philosopherStatus[philosopher] = HUNGRY;
+}
+
+void tryToEat (int philosopher) {
+    // JD: You need a forward declaration of pickupChopstick.
+	pickupChopstick(philosopher);
+	pickupChopstick((philosopher + 1) % NUMBER_OF_PHILOSOPHERS);
+	philosopherStatus[philosopher] = EATING;
+	randomWait(NUMBER_OF_PHILOSOPHERS);
 }
 
 void finishEATING (int philosopher) {
@@ -97,7 +100,7 @@ void* dineThePhilosophers (void* philosopher) {
 		if (philosopherStatus[currentPhilosopher] == THINKING) {
 			philosophizeAboutNoms(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == HUNGRY) {
-			nom(currentPhilosopher);
+			tryToEat(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == EATING) {
 			finishEATING(currentPhilosopher);
 		}
