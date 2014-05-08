@@ -7,9 +7,9 @@
 #include <unistd.h>
 
 #define NUMBER_OF_PHILOSOPHERS 5
-#define WANTINGNOMS 0     // HUNGRY
-#define NOMMING 1		  // EATING
-#define PHILOSOPHIZING 2  // THINKING
+#define HUNGRY 0    
+#define EATING 1		  
+#define THINKING 2  
 
 int philosopherNumber[NUMBER_OF_PHILOSOPHERS];
 int philosopherStatus[NUMBER_OF_PHILOSOPHERS];
@@ -25,14 +25,14 @@ void printPhilosophers () {
 
 	for (i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
 		// Thinking
-		if (philosopherStatus[i] == PHILOSOPHIZING) {
-			printf("  T  ");
+		if (philosopherStatus[i] == THINKING) {
+			printf("  (´-`)  ");
 		// Hungry
-		} else if (philosopherStatus[i] == WANTINGNOMS) {
-			printf("  H  ");
+		} else if (philosopherStatus[i] == HUNGRY) {
+			printf("  (^_^)  ");
 		// Eating
-		} else if (philosopherStatus[i] == NOMMING) {
-			printf("  E  ");
+		} else if (philosopherStatus[i] == EATING) {
+			printf("  \\(^o^)/  ");
 		}
 	}
 	printf("\n");
@@ -50,14 +50,14 @@ void philosophizeAboutNoms (int philosopher) {
     //     that your philosopher will tend to wait longer if there are more
     //     philosophers at the table...?
 	randomWait(NUMBER_OF_PHILOSOPHERS);
-	philosopherStatus[philosopher] = WANTINGNOMS;
+	philosopherStatus[philosopher] = HUNGRY;
 }
 
 void nom (int philosopher) {
     // JD: You need a forward declaration of pickupChopstick.
 	pickupChopstick(philosopher);
 	pickupChopstick((philosopher + 1) % NUMBER_OF_PHILOSOPHERS);
-	philosopherStatus[philosopher] = NOMMING;
+	philosopherStatus[philosopher] = EATING;
 	randomWait(NUMBER_OF_PHILOSOPHERS);
 }
 
@@ -78,15 +78,15 @@ void putdownChopstick (int chopstick) {
 	chopstickStatus[chopstick] -= 1;
 }
 
-void finishNomming (int philosopher) {
+void finishEATING (int philosopher) {
 	putdownChopstick(philosopher);
 	putdownChopstick((philosopher + 1) % NUMBER_OF_PHILOSOPHERS);
-	philosopherStatus[philosopher] = PHILOSOPHIZING;
+	philosopherStatus[philosopher] = THINKING;
 }
 
 void* dineThePhilosophers (void* philosopher) {
 	int currentPhilosopher = *(int*) philosopher;
-	printPhilosophers(); // JD: If printing is outside a critical section, you
+	//printPhilosophers(); // JD: If printing is outside a critical section, you
                          //     run the risk of multiple threads printing
                          //     concurrently, thus producing a garbled display.
 
@@ -94,12 +94,12 @@ void* dineThePhilosophers (void* philosopher) {
 
 		printPhilosophers();
 
-		if (philosopherStatus[currentPhilosopher] == PHILOSOPHIZING) {
+		if (philosopherStatus[currentPhilosopher] == THINKING) {
 			philosophizeAboutNoms(currentPhilosopher);
-		} else if (philosopherStatus[currentPhilosopher] == WANTINGNOMS) {
+		} else if (philosopherStatus[currentPhilosopher] == HUNGRY) {
 			nom(currentPhilosopher);
-		} else if (philosopherStatus[currentPhilosopher] == NOMMING) {
-			finishNomming(currentPhilosopher);
+		} else if (philosopherStatus[currentPhilosopher] == EATING) {
+			finishEATING(currentPhilosopher);
 		}
 	}
 }
@@ -111,7 +111,7 @@ int main () {
 	pthread_t philosphers[NUMBER_OF_PHILOSOPHERS];
 
 	for (i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
-		philosopherStatus[i] = PHILOSOPHIZING;
+		philosopherStatus[i] = THINKING;
 		philosopherNumber[i] = i;
 		chopstickStatus[i] = 0;
 		pthread_mutex_init(&chopstickNumber[i], NULL);
