@@ -14,6 +14,7 @@
 int philosopherNumber[NUMBER_OF_PHILOSOPHERS];
 int philosopherStatus[NUMBER_OF_PHILOSOPHERS];
 
+pthread_mutex_t printing;
 pthread_mutex_t chopstickNumber[NUMBER_OF_PHILOSOPHERS];
 int chopstickStatus[NUMBER_OF_PHILOSOPHERS];
 
@@ -24,21 +25,23 @@ int chopstickStatus[NUMBER_OF_PHILOSOPHERS];
 // Added ascii art: http://en.wikipedia.org/wiki/List_of_emoticons
 // Eating will have chopsticks up
 void printPhilosophers () {
+	pthread_mutex_lock(&printing);
 	int i;
 
 	for (i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
 		// Thinking
 		if (philosopherStatus[i] == THINKING) {
-			printf("  (´-`)  ");
+			printf("   (´-`)   ");
 		// Hungry
 		} else if (philosopherStatus[i] == HUNGRY) {
-			printf("  (^_^)  ");
+			printf("   (^_^)   ");
 		// Eating
 		} else if (philosopherStatus[i] == EATING) {
 			printf("  \\(^o^)/  ");
 		}
 	}
 	printf("\n");
+	pthread_mutex_unlock(&printing);
 }
 
 // Ah, sample code for random wait. NOM NOM NOM.
@@ -89,16 +92,11 @@ void finishEATING (int philosopher) {
 
 void* dineThePhilosophers (void* philosopher) {
 	int currentPhilosopher = *(int*) philosopher;
-	//printPhilosophers(); // JD: If printing is outside a critical section, you
-                         //     run the risk of multiple threads printing
-                         //     concurrently, thus producing a garbled display.
 
 	while (1) {
-
 		printPhilosophers();
-
 		if (philosopherStatus[currentPhilosopher] == THINKING) {
-			philosophizeAboutNoms(currentPhilosopher);
+			thinkAboutEating(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == HUNGRY) {
 			tryToEat(currentPhilosopher);
 		} else if (philosopherStatus[currentPhilosopher] == EATING) {
@@ -112,11 +110,13 @@ int main () {
 	int i;
 	// Initialize thread with NUMBER_OF_PHILOSOPHERS philosophers
 	pthread_t philosphers[NUMBER_OF_PHILOSOPHERS];
+	pthread_mutex_init(&printing, NULL);
 
 	for (i = 0; i < NUMBER_OF_PHILOSOPHERS; i++) {
 		philosopherStatus[i] = THINKING;
 		philosopherNumber[i] = i;
 		chopstickStatus[i] = 0;
+
 		pthread_mutex_init(&chopstickNumber[i], NULL);
 		pthread_create(&philosphers[i], NULL, dineThePhilosophers, &philosopherNumber[i]);
 	}
