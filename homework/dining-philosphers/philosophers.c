@@ -17,7 +17,9 @@ int philosopherStatus[NUMBER_OF_PHILOSOPHERS];
 pthread_mutex_t chopstickNumber[NUMBER_OF_PHILOSOPHERS];
 int chopstickStatus[NUMBER_OF_PHILOSOPHERS];
 
-
+// JD: Missing from this display is the chopstick state.  Not absolutely
+//     required, but as you might imagine this would be really helpful
+//     in following what's going on.
 void printPhilosophers () {
 	int i;
 
@@ -44,11 +46,15 @@ int randomWait(int bound) {
 }
 
 void philosophizeAboutNoms (int philosopher) {
+    // JD: Why is the number of philosophers the basis for waiting?  This implies
+    //     that your philosopher will tend to wait longer if there are more
+    //     philosophers at the table...?
 	randomWait(NUMBER_OF_PHILOSOPHERS);
 	philosopherStatus[philosopher] = WANTINGNOMS;
 }
 
 void nom (int philosopher) {
+    // JD: You need a forward declaration of pickupChopstick.
 	pickupChopstick(philosopher);
 	pickupChopstick((philosopher + 1) % NUMBER_OF_PHILOSOPHERS);
 	philosopherStatus[philosopher] = NOMMING;
@@ -57,10 +63,17 @@ void nom (int philosopher) {
 
 void pickupChopstick (int chopstick) {
 	pthread_mutex_lock(&chopstickNumber[chopstick]);
+    // JD: Sanity check needed here---make sure the chopstick isn't taken
+    //     before you pick it up.
 	chopstickStatus[chopstick] += 1;
 }
 
 void putdownChopstick (int chopstick) {
+    // JD: This is reversed---change state *before* unlocking the chopstick,
+    //     not after!  The moment you unlock, someone else can butt in.
+
+    // JD: In addition, sanity check needed here---make sure the chopstick
+    //     isn't available before you put it down.
 	pthread_mutex_unlock(&chopstickNumber[chopstick]);
 	chopstickStatus[chopstick] -= 1;
 }
@@ -73,7 +86,9 @@ void finishNomming (int philosopher) {
 
 void* dineThePhilosophers (void* philosopher) {
 	int currentPhilosopher = *(int*) philosopher;
-	printPhilosophers();
+	printPhilosophers(); // JD: If printing is outside a critical section, you
+                         //     run the risk of multiple threads printing
+                         //     concurrently, thus producing a garbled display.
 
 	while (1) {
 
