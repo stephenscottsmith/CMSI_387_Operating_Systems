@@ -100,6 +100,7 @@
 00001e60  00 00 00 00 ed e2 77 1e  00 00 00 00 00 00 00 00  |......w.........|
 00001e70  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 
+# JD: Where's nonempty.txt?
 
 // I believe this is the inode for the nonempty2.txt and its hard link.
 00001e80  b4 81 e8 03 3e 00 00 00  c0 f2 44 53 b4 f2 44 53  |....>.....DS..DS|
@@ -200,6 +201,8 @@
 
 
 // This is the data block for the nonempty1.txt
+
+# JD: How did you know?  You didn't locate its inode.
 00007400  54 68 69 73 20 69 73 20  61 20 62 61 73 69 63 2c  |This is a basic,|
 00007410  20 6e 6f 6e 2d 65 6d 70  74 79 20 74 65 78 74 20  | non-empty text |
 00007420  66 69 6c 65 2e 20 45 4e  4a 4f 59 2e 0a 00 00 00  |file. ENJOY.....|
